@@ -1,0 +1,5 @@
+HEADLESS = True
+IMPLICIT_WAIT = 5
+SCROLL_PAUSE = 2
+POPPLY_BASE_URL = "https://www.popply.co.kr"
+POPPLY_POPUP_LIST_URL = f"{POPPLY_BASE_URL}/popup"
