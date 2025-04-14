@@ -1,4 +1,4 @@
-from crawler.popply_crawler import PopplyCrawler
+from src.popply_crawler import PopplyCrawler
 
 def main():
     crawler = PopplyCrawler()

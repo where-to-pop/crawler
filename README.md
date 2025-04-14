@@ -14,7 +14,7 @@ python run.py
 ```
 ├── configs/
 │   └── settings.py # 설정 파일
-├── crawler/
+├── src/
 │   ├── base_crawler.py # 공통 크롤러 로직
 │   └── popply_crawler.py # 사이트별 크롤러
 ├── data/ # 크롤링 데이터 임시 저장소
