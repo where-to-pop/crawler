@@ -1,3 +1,5 @@
 .venv/
 drafts/
-__pycache__/
+**/__pycache__/
+configs/__pycache__/
+.env
