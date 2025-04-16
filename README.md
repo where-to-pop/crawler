@@ -13,15 +13,22 @@ python run.py
 ## 📁 프로젝트 구조
 ```
 ├── configs/
-│   └── settings.py # 설정 파일
-├── src/
-│   ├── base_crawler.py # 공통 크롤러 로직
-│   └── popply_crawler.py # 사이트별 크롤러
+│   └── settings.py
 ├── data/ # 크롤링 데이터 임시 저장소
+│   └── popply/
+├── sources/  # 데이터 수집
+│   └── popply_crawler.py
+├── uploaders/  # 데이터 업로드
+│   ├── elasticsearch_client.py
+│   ├── popply_index.py
+│   └── popply_uploader.py
+├── base/  # 공통 베이스 클래스
+│   ├── base_crawler.py
+├── .venv/
 ├── main.py # 크롤러 실행 진입점
+├── requirements.txt
 ├── run.py # 가상환경 자동 관리 및 실행 스크립트
-├── requirements.txt # 의존성 리스트
-└── README.md # 이 파일
+
 ```
 
 ## 📝 Commit Convention

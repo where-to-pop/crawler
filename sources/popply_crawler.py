@@ -1,7 +1,7 @@
 import time
 import json
 from datetime import datetime
-from src.base_crawler import BaseCrawler
+from base import BaseCrawler
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from configs import settings
