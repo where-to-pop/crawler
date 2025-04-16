@@ -24,5 +24,6 @@ class ElasticsearchClient:
             if not self.client.ping():
                 raise ValueError("Elasticsearch 연결 실패")
 
-    def get_client(self):
-        return self.client
+    @classmethod
+    def get_client(cls):
+        return Elasticsearch(ELASTICSEARCH_HOST)
