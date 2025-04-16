@@ -46,17 +46,17 @@ class PopplyCrawler(BaseCrawler):
             self.scroll_to_bottom()
         time.sleep(2)
 
-        items = self.driver.find_elements(By.CSS_SELECTOR, "div.popup-info-wrap")
+        items = self.driver.find_elements(By.CSS_SELECTOR, "a[href^='/popup/']")
         print(f"[+] 팝업 항목 {len(items)}개 발견됨")
 
         seen_links = set()
-
-        # 팝업 아이템들 추출
-        items = self.driver.find_elements(By.CSS_SELECTOR, "a[href^='/popup/']")
+        cnt = 0
         for item in items:
+            if cnt == 5:
+                break
+            cnt += 1
             try:
                 title = item.find_element(By.CSS_SELECTOR, ".popup-name p").text.strip()
-                location = item.find_element(By.CSS_SELECTOR, ".popup-location").text.strip()
                 period = item.find_element(By.CSS_SELECTOR, ".popup-date").text.strip()
                 link_tag = item.find_element(By.XPATH, "../a") 
                 relative_url = link_tag.get_attribute("href")
@@ -64,6 +64,13 @@ class PopplyCrawler(BaseCrawler):
                 if not title or relative_url in seen_links:
                     continue
                 seen_links.add(relative_url)
+
+                self.driver.get(relative_url)
+                time.sleep(2)
+
+                # location = self.driver.find_element(By.CSS_SELECTOR, ".location").text.strip()
+                location = self.driver.find_element(By.CSS_SELECTOR, "div.popupdetail-map > ul > li > p").text.strip()
+
 
                 self.popup_list.append({
                     "title": title,
@@ -73,11 +80,9 @@ class PopplyCrawler(BaseCrawler):
                 })
 
             except NoSuchElementException:
-                print("[!] popup-name 없음, 스킵")
-                print(item.get_attribute("outerHTML"))
+                print("[!] 필수 요소 없음, 스킵")
             except Exception as e:
                 print(f"[!] 항목 파싱 실패: {e}")
-                print(item.get_attribute("outerHTML"))
 
     def save_to_json(self):
         today = datetime.today().strftime("%Y%m%d")
