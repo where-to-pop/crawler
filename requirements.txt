@@ -2,3 +2,5 @@ selenium
 webdriver-manager
 beautifulsoup4
 requests
+lxml
+python-dotenv

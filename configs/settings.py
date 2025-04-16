@@ -3,3 +3,6 @@ IMPLICIT_WAIT = 5
 SCROLL_PAUSE = 2
 POPPLY_BASE_URL = "https://www.popply.co.kr"
 POPPLY_POPUP_LIST_URL = f"{POPPLY_BASE_URL}/popup"
+
+REQUESTS_TIMEOUT=5
+SEOUL_API_BASE_URL = "http://openapi.seoul.go.kr:8088"
