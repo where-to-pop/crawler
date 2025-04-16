@@ -1,4 +1,2 @@
-from enum import Enum
-
-class ESIndex(Enum):
+class ESIndex:
     POPPLY_POPUPS = "popply_popups"
