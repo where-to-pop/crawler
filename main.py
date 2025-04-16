@@ -1,17 +1,21 @@
-from sources import PopplyCrawler
-from sources import SeoulApiFetcher
-from dotenv import load_dotenv
-import os
+from configs.settings import SEOUL_DATA_API_KEY, ELASTICSEARCH_HOST
+from database import ElasticsearchClient
 
 def main():
-    load_dotenv()  # 이거 위치가 여기가 괜찮으려나...
+    try:
+        es_client = ElasticsearchClient()
+        client = es_client.get_client()
 
-    SEOUL_DATA_API_KEY = os.environ.get("SEOUL_DATA_API_KEY")
-    api_fetcher = SeoulApiFetcher(SEOUL_DATA_API_KEY)
+        print("Elasticsearch 연결 성공!")
+        print(client.info())
+    except Exception as e:
+        print(f"Elasticsearch 연결 실패: {e}")
 
-    test_area_code = "POI068"
-    api_fetcher.fetch_population(test_area_code)
+    # api_fetcher = SeoulApiFetcher(SEOUL_DATA_API_KEY)
 
+    # test_area_code = "POI068"
+    # api_fetcher.fetch_population(test_area_code)
+    print(ELASTICSEARCH_HOST)
 
 if __name__ == "__main__":
     main()
