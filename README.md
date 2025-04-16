@@ -14,11 +14,13 @@ python run.py
 ```
 ├── configs/
 │   └── settings.py
+├── constants/
+│   └── index_names.py
 ├── data/ # 크롤링 데이터 임시 저장소
 │   └── popply/
 ├── sources/  # 데이터 수집
 │   └── popply_crawler.py
-├── uploaders/  # 데이터 업로드
+├── database/  # 데이터 업로드
 │   ├── elasticsearch_client.py
 │   ├── popply_index.py
 │   └── popply_uploader.py
